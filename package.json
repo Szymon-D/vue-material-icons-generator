@@ -1,0 +1,32 @@
+{
+  "name": "vue-material-icons-generator",
+  "version": "1.0.0",
+  "description": "Fetch material design icons with single command",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app"
+  },
+  "bin": {
+    "vue-material-icons-generator": "src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Szymon-D/vue-material-icons-generator.git"
+  },
+  "keywords": [
+    "vue",
+    "material",
+    "design",
+    "icons",
+    "ssr"
+  ],
+  "author": "dszymon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Szymon-D/vue-material-icons-generator/issues"
+  },
+  "homepage": "https://github.com/Szymon-D/vue-material-icons-generator#readme",
+  "dependencies": {
+    "es6-promise-pool": "2.5.0"
+  }
+}
