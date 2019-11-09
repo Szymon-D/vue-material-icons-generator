@@ -40,7 +40,7 @@ function fetchIcon(index, totalCount, iconId) {
 }
 
 module.exports.fetchIcons = async () => {
-    const response = JSON.parse(await httpGet('https://material.io/tools/icons/static/data.json'));
+    const response = JSON.parse(await httpGet('https://material.io/resources/icons/static/data.json'));
     const {categories} = response;
     const icons = [];
     
