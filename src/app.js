@@ -17,16 +17,19 @@ if (!fs.existsSync(basePath)) {
 const TEMPLATE = fs.readFileSync(path.join(__dirname, 'componentTemplate.vue')).toString();
 
 async function createComponent({type, file}) {
-    const svgContent = (await readContent(path.join(iconsPath, type, file))).toString();
-    const matches = svgContent.match(/\sd="(.*?)"/g);
+    const svgContent = (await readContent(path.join(iconsPath, type, file)))
+        .toString()
+        .replace(/\n/g, '');
+    const matches = Array.from(svgContent.matchAll(/\sd="(.*?)"/gs))
+        .filter(m => m.length > 0);
     
-    if (!Array.isArray(matches)) {
+    if (matches.length === 0) {
         console.warn('No path match for', file, `(${type})`);
         return;
     }
     
     const svgPath = matches.map(
-        m => m.match(/d="(.*?)"/)[1],
+        m => m[1],
     ).reduce(
         (path, currentPath) => path.length > currentPath.length ? path : currentPath,
         '',

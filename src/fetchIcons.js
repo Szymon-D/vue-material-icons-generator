@@ -40,16 +40,9 @@ function fetchIcon(index, totalCount, iconId) {
 }
 
 module.exports.fetchIcons = async () => {
-    const response = JSON.parse(await httpGet('https://material.io/resources/icons/static/data.json'));
-    const {categories} = response;
-    const icons = [];
-    
-    for (const category of categories) {
-        for (const icon of category.icons) {
-            icons.push(icon.id);
-        }
-    }
-
+    const rawResponse = await httpGet('https://fonts.google.com/metadata/icons');
+    const response = JSON.parse(rawResponse.substring(4));
+    const icons = response.icons.map(({name}) => name);
     const totalCount = icons.length;
     
     console.log('Total icons:', totalCount);
